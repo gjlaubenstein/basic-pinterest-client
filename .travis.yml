@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '4.1'
+before_script:
+- npm install -g gulp
+script: gulp test
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+deploy:
+  provider: npm
+  email: gjlaubenstein@gmail.com
+  on:
+    tags: true
+    repo: gjlaubenstein/basic-pinterest-client
